@@ -3,24 +3,16 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 
-public class EscreverArquivo {
-
+public class AdicionarAoArquivo {
     public static void main(String[] args) {
         String filename = "teste.txt";
-        String mensagemInicial = "Olá arquivo";
-        String novaMensagem = "\nAdicionando uma nova linha no arquivo";
-
+        String mensagem = " Adicionando mais conteúdo";
         try {
-            Files.write(Paths.get(filename), mensagemInicial.getBytes());
+            // Adiciona novas informações no final do arquivo
+            Files.write(Paths.get(filename), mensagem.getBytes(), StandardOpenOption.APPEND);
+            System.out.println("Informações adicionadas com sucesso");
         } catch (IOException e) {
-            System.out.println("Erro ao salvar arquivo");
-            e.printStackTrace();
-        }
-
-        try {
-            Files.write(Paths.get(filename), novaMensagem.getBytes(), StandardOpenOption.APPEND);
-        } catch (IOException e) {
-            System.out.println("Erro ao adicionar informações no arquivo");
+            System.out.println("Erro ao adicionar informações ao arquivo");
             e.printStackTrace();
         }
     }
